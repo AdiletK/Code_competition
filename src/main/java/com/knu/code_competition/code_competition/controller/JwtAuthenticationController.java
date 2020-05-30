@@ -12,11 +12,12 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/v1/")
 @RestController
-@CrossOrigin
 public class JwtAuthenticationController {
 
     private final AuthenticationManager authenticationManager;
