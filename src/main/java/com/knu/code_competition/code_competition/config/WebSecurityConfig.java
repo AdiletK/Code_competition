@@ -2,7 +2,7 @@ package com.knu.code_competition.code_competition.config;
 
 import com.knu.code_competition.code_competition.config.jwt.JwtAuthenticationEntryPoint;
 import com.knu.code_competition.code_competition.config.jwt.JwtRequestFilter;
-import com.knu.code_competition.code_competition.service.JwtUserDetailsServiceImpl;
+import com.knu.code_competition.code_competition.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

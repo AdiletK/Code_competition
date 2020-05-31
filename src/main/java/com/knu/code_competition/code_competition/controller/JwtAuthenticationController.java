@@ -4,7 +4,7 @@ import com.knu.code_competition.code_competition.config.jwt.JwtTokenUtil;
 import com.knu.code_competition.code_competition.model.JwtRequest;
 import com.knu.code_competition.code_competition.model.JwtResponse;
 import com.knu.code_competition.code_competition.model.UserModel;
-import com.knu.code_competition.code_competition.service.JwtUserDetailsServiceImpl;
+import com.knu.code_competition.code_competition.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -12,10 +12,8 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RequestMapping("api/v1/")
 @RestController
 public class JwtAuthenticationController {

@@ -1,9 +1,9 @@
-package com.knu.code_competition.code_competition.service;
+package com.knu.code_competition.code_competition.service.impl;
 
+import com.knu.code_competition.code_competition.Utils.UserSaver;
 import com.knu.code_competition.code_competition.entity.User;
 import com.knu.code_competition.code_competition.model.UserModel;
 import com.knu.code_competition.code_competition.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,8 +14,11 @@ import java.util.ArrayList;
 @Service
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    UserRepo userRepo;
+    private final UserRepo userRepo;
+
+    public JwtUserDetailsServiceImpl(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -28,12 +31,6 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     }
 
     public User save(UserModel userModel) {
-        User user = new User();
-        user.setName(userModel.getName());
-        user.setSurname(userModel.getSurname());
-        user.setPatronymic(userModel.getPatronymic());
-        user.setLogin(userModel.getUsername());
-        user.setPassword(new BCryptPasswordEncoder().encode(userModel.getPassword()));
-        return userRepo.save(user);
+        return userRepo.save(UserSaver.saveUser(new User(), userModel));
     }
 }
