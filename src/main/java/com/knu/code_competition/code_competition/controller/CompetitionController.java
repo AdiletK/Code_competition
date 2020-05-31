@@ -1,6 +1,7 @@
 package com.knu.code_competition.code_competition.controller;
 
 import com.knu.code_competition.code_competition.model.CompetitionModel;
+import com.knu.code_competition.code_competition.model.CompetitionShortModel;
 import com.knu.code_competition.code_competition.service.CompetitionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,12 @@ public class CompetitionController {
     }
 
     @PostMapping
-    public CompetitionModel create(@RequestBody CompetitionModel model) {
+    public CompetitionShortModel create(@RequestBody CompetitionShortModel model) {
         return competitionService.create(model);
     }
 
     @PostMapping("/{id}")
-    public CompetitionModel update(@PathVariable Long id, @RequestBody CompetitionModel model){
+    public CompetitionShortModel update(@PathVariable Long id, @RequestBody CompetitionShortModel model){
         return competitionService.update(id, model);
     }
 

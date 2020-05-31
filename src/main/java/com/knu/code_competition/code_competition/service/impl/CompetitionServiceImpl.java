@@ -2,6 +2,7 @@ package com.knu.code_competition.code_competition.service.impl;
 
 import com.knu.code_competition.code_competition.entity.Competition;
 import com.knu.code_competition.code_competition.model.CompetitionModel;
+import com.knu.code_competition.code_competition.model.CompetitionShortModel;
 import com.knu.code_competition.code_competition.repository.CompetitionRepo;
 import com.knu.code_competition.code_competition.service.CompetitionService;
 import com.knu.code_competition.code_competition.service.SubjectService;
@@ -38,18 +39,18 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
-    public CompetitionModel create(CompetitionModel model) {
+    public CompetitionShortModel create(CompetitionShortModel model) {
         Competition c = new Competition();
         return getCompetitionModel(model, c);
     }
 
     @Override
-    public CompetitionModel update(Long id, CompetitionModel model) {
+    public CompetitionShortModel update(Long id, CompetitionShortModel model) {
         Competition c = competitionRepo.getOne(id);
         return getCompetitionModel(model, c);
     }
 
-    private CompetitionModel getCompetitionModel(CompetitionModel model, Competition c) {
+    private CompetitionShortModel getCompetitionModel(CompetitionShortModel model, Competition c) {
         c.setName(model.getName());
         c.setSubject(subjectService.findById(model.getSubjectId()));
         c.setUser(userService.getCurrentUserId());
@@ -57,7 +58,6 @@ public class CompetitionServiceImpl implements CompetitionService {
         c.setEnd_date(model.getEnd_date());
         c = competitionRepo.save(c);
         model.setId(c.getId());
-        model.setUserId(c.getUser().getId());
         return model;
     }
 

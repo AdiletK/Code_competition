@@ -2,6 +2,7 @@ package com.knu.code_competition.code_competition.service;
 
 import com.knu.code_competition.code_competition.entity.Competition;
 import com.knu.code_competition.code_competition.model.CompetitionModel;
+import com.knu.code_competition.code_competition.model.CompetitionShortModel;
 
 import java.util.List;
 
@@ -12,9 +13,9 @@ public interface CompetitionService {
 
     CompetitionModel findById(Long id);
 
-    CompetitionModel create(CompetitionModel competitionModel);
+    CompetitionShortModel create(CompetitionShortModel competitionModel);
 
-    CompetitionModel update(Long id, CompetitionModel competitionModel);
+    CompetitionShortModel update(Long id, CompetitionShortModel competitionModel);
 
     void delete(Long id);
 }
