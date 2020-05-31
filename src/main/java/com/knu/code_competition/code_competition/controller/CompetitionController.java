@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/competition")
 @CrossOrigin
+@RequestMapping("/api/v1/competition")
 @RestController
 public class CompetitionController {
     private final CompetitionService competitionService;
