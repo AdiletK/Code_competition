@@ -1,8 +1,15 @@
 package com.knu.code_competition.code_competition.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {

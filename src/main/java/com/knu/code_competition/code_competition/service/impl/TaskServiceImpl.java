@@ -1,6 +1,7 @@
 package com.knu.code_competition.code_competition.service.impl;
 
 import com.knu.code_competition.code_competition.entity.Task;
+import com.knu.code_competition.code_competition.enums.TaskType;
 import com.knu.code_competition.code_competition.model.TaskModel;
 import com.knu.code_competition.code_competition.model.TaskShortModel;
 import com.knu.code_competition.code_competition.repository.TaskRepo;
@@ -47,6 +48,11 @@ public class TaskServiceImpl implements TaskService {
     public TaskShortModel update(Long id, TaskShortModel model) {
         Task task = taskRepo.getOne(id);
         return getTaskModel(model, task);
+    }
+
+    @Override
+    public TaskType[] taskTypes() {
+        return TaskType.values();
     }
 
     private TaskShortModel getTaskModel(TaskShortModel model, Task task) {

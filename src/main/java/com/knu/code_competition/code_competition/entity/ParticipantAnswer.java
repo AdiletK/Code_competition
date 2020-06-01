@@ -1,10 +1,15 @@
 package com.knu.code_competition.code_competition.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "participant_answer")
-public class Participant_answer {
+public class ParticipantAnswer {
     @Id
     @SequenceGenerator(name = "participant_answer_seq", sequenceName = "participant_answer_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "participant_answer_seq")

@@ -1,5 +1,6 @@
 package com.knu.code_competition.code_competition.controller;
 
+import com.knu.code_competition.code_competition.enums.TaskType;
 import com.knu.code_competition.code_competition.model.TaskModel;
 import com.knu.code_competition.code_competition.model.TaskShortModel;
 import com.knu.code_competition.code_competition.service.TaskService;
@@ -21,6 +22,11 @@ public class TaskController {
     @GetMapping("/all")
     public List<TaskModel> findAll(){
         return taskService.findAll();
+    }
+
+    @GetMapping("/types")
+    public TaskType[] taskTypes(){
+        return taskService.taskTypes();
     }
 
     @GetMapping("/{id}")

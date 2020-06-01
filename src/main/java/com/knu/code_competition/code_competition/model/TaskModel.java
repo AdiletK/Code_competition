@@ -1,12 +1,14 @@
 package com.knu.code_competition.code_competition.model;
 
 import com.knu.code_competition.code_competition.enums.TaskType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class TaskModel {
     private Long id;
 
@@ -17,11 +19,4 @@ public class TaskModel {
     private Long competitionId;
     private String competitionName;
 
-    public TaskModel(Long id, String description, TaskType taskType, Long competitionId, String competitionName) {
-        this.id = id;
-        this.description = description;
-        this.taskType = taskType;
-        this.competitionId = competitionId;
-        this.competitionName = competitionName;
-    }
 }

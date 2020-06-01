@@ -7,12 +7,15 @@ import com.knu.code_competition.code_competition.model.UserModel;
 import com.knu.code_competition.code_competition.repository.UserRepo;
 import com.knu.code_competition.code_competition.service.UserService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -53,6 +56,10 @@ public class UserServiceImpl implements UserService {
                 login = ((UserDetails) authentication.getPrincipal()).getUsername();
             else if (authentication.getPrincipal() instanceof String)
                 login = (String) authentication.getPrincipal();
+
+        System.out.println("Roles:" + ( (UserDetails) authentication.getPrincipal()).getAuthorities().stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList()));
 
         System.out.println("test----------" + login + "  " + userRepo.findByLogin(login).getId());
         return userRepo.findByLogin(login);
