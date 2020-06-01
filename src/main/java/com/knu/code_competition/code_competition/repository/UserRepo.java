@@ -10,11 +10,11 @@ import java.util.List;
 public interface UserRepo extends JpaRepository<User, Long> {
     User findByLogin(String login);
 
-    @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.login, user.password) " +
+    @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.id, user.name, user.surname, user.patronymic,user.login, user.password) " +
             "from User user")
     List<UserModel> getAll();
 
-    @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.login, user.password) " +
+    @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.id, user.name, user.surname, user.patronymic,user.login, user.password) " +
             "from User user where user.id =:id")
     UserModel findUserById(Long id);
 

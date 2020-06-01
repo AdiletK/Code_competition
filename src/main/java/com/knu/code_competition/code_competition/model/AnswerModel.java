@@ -4,16 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class AnswerModel {
+public class AnswerModel implements Serializable {
     private Long id;
 
     private String option;
 
     private Long taskId;
     private String taskName;
-
+    private Boolean isCorrect;
 }

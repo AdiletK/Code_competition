@@ -1,12 +1,13 @@
 package com.knu.code_competition.code_competition.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "answer")
 public class Answer {
@@ -21,4 +22,7 @@ public class Answer {
     @ManyToOne
     @JoinColumn(name = "task_id")
     private Task task;
+
+    @Column(name = "isCorrect")
+    private Boolean isCorrect;
 }

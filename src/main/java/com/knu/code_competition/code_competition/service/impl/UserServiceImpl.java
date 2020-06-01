@@ -57,10 +57,6 @@ public class UserServiceImpl implements UserService {
             else if (authentication.getPrincipal() instanceof String)
                 login = (String) authentication.getPrincipal();
 
-        System.out.println("Roles:" + ( (UserDetails) authentication.getPrincipal()).getAuthorities().stream()
-                .map(a -> ((GrantedAuthority) a).getAuthority())
-                .collect(toList()));
-
         System.out.println("test----------" + login + "  " + userRepo.findByLogin(login).getId());
         return userRepo.findByLogin(login);
     }

@@ -49,7 +49,8 @@ public class AnswerServiceImpl implements AnswerService {
 
     private AnswerShortModel getAnswerModel(AnswerShortModel model, Answer answer) {
         answer.setOption(model.getOption());
-        answer.setTask(taskService.getById(model.getId()));
+        answer.setTask(taskService.getById(model.getTaskId()));
+        answer.setIsCorrect(model.getIsCorrect());
         answer = answerRepo.save(answer);
         model.setId(answer.getId());
         return model;

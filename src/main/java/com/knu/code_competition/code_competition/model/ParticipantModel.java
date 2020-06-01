@@ -6,13 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
-public class ParticipantModel {
+public class ParticipantModel implements Serializable {
     private Long id;
 
     private Long userId;
