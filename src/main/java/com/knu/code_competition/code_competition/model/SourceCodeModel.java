@@ -10,10 +10,12 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AnswerModel implements Serializable {
+public class SourceCodeModel implements Serializable {
     private Long id;
 
-    private String option;
+    private Float time;
+
+    private Float memory;
 
     private Long taskId;
     private String taskName;

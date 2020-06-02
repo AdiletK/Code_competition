@@ -15,5 +15,4 @@ public class AnswerShortModel implements Serializable {
 
     private Long taskId;
 
-    private Boolean isCorrect;
 }

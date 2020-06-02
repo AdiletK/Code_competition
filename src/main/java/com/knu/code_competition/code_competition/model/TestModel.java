@@ -10,11 +10,12 @@ import java.io.Serializable;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AnswerModel implements Serializable {
+public class TestModel implements Serializable {
     private Long id;
 
-    private String option;
+    private String input;
 
-    private Long taskId;
-    private String taskName;
+    private String output;
+
+    private Long sourceCodeId;
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@PreAuthorize("hasRole('admin')")
 @CrossOrigin
 @RequestMapping("/api/v1/subject")
 @RestController
@@ -29,16 +28,19 @@ public class SubjectController {
         return subjectService.findById(id);
     }
 
+    @PreAuthorize("hasRole('admin')")
     @PostMapping
     public Subject create(@RequestBody Subject subject){
         return subjectService.create(subject);
     }
 
+    @PreAuthorize("hasRole('admin')")
     @PostMapping("/{id}")
     public Subject update(@PathVariable Long id, @RequestBody Subject subject){
         return subjectService.update(id, subject);
     }
 
+    @PreAuthorize("hasRole('admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         subjectService.delete(id);

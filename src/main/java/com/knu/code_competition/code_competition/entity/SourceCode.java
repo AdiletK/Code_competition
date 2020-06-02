@@ -12,15 +12,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "answer")
-public class Answer {
+@Table(name = "source_code")
+public class SourceCode {
     @Id
-    @SequenceGenerator(name = "answer_seq", sequenceName = "answer_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq")
+    @SequenceGenerator(name = "source_code_seq", sequenceName = "source_code_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "source_code_seq")
     private Long id;
 
-    @Column(name = "answer")
-    private String answer;
+    @Column(name = "time_limit")
+    private Float time;
+
+    @Column(name = "memory_limit")
+    private Float memory;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
