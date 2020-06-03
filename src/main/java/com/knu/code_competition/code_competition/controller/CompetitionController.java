@@ -24,6 +24,11 @@ public class CompetitionController {
         return competitionService.findAll();
     }
 
+    @GetMapping("/by_subject/{id}")
+    public List<CompetitionModel> findAllBySubjectId(@PathVariable Long id){
+        return competitionService.findAllBySubjectId(id);
+    }
+
     @GetMapping("/{id}")
     public CompetitionModel findById(@PathVariable Long id){
         return competitionService.findById(id);

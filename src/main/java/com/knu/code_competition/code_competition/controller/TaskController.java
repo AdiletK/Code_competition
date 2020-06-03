@@ -25,6 +25,10 @@ public class TaskController {
     public List<TaskModel> findAll(){
         return taskService.findAll();
     }
+    @GetMapping("/by_competition/{id}")
+    public List<TaskModel> findAllCompetitionId(@PathVariable Long id){
+        return taskService.findAllByCompetitionId(id);
+    }
 
     @GetMapping("/types")
     public TaskType[] taskTypes(){

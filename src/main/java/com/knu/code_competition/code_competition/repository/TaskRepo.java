@@ -15,4 +15,8 @@ public interface TaskRepo extends JpaRepository<Task, Long> {
     @Query("select new com.knu.code_competition.code_competition.model.TaskModel(t.id, t.description, t.taskType, t.competition.id, t.competition.name) " +
             "from Task t where t.id = ?1")
     TaskModel findTaskById(Long id);
+
+    @Query("select new com.knu.code_competition.code_competition.model.TaskModel(t.id, t.description, t.taskType, t.competition.id, t.competition.name) " +
+            "from Task t where t.competition.id=?1")
+    List<TaskModel> getAllByTaskId(Long taskId);
 }

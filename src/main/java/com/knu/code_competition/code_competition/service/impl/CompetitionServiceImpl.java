@@ -29,6 +29,11 @@ public class CompetitionServiceImpl implements CompetitionService {
     }
 
     @Override
+    public List<CompetitionModel> findAllBySubjectId(Long subjectId) {
+        return competitionRepo.getAllBySubjectId(subjectId);
+    }
+
+    @Override
     public Competition getById(Long id) {
         return competitionRepo.getOne(id);
     }

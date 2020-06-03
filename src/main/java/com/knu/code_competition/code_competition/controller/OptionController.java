@@ -24,6 +24,11 @@ public class OptionController {
         return optionService.findAll();
     }
 
+    @GetMapping("/by_task/{id}")
+    public List<OptionModel> findAllByTaskId(@PathVariable Long id){
+        return optionService.findAllByTaskId(id);
+    }
+
     @GetMapping("/{id}")
     public OptionModel findById(@PathVariable Long id){
         return optionService.findById(id);

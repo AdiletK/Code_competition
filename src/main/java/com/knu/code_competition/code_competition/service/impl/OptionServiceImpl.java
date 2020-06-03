@@ -26,6 +26,11 @@ public class OptionServiceImpl implements OptionService {
     }
 
     @Override
+    public List<OptionModel> findAllByTaskId(Long taskId) {
+        return optionRepo.getAllByTaskId(taskId);
+    }
+
+    @Override
     public Option getById(Long id) {
         return optionRepo.getOne(id);
     }

@@ -15,4 +15,9 @@ public interface SourceCodeRepo extends JpaRepository<SourceCode, Long> {
     @Query("select new com.knu.code_competition.code_competition.model.SourceCodeModel(a.id, a.time, a.memory, a.task.id, a.task.description) " +
             "from SourceCode a where a.id =?1")
     SourceCodeModel getById(Long id);
+
+    @Query("select new com.knu.code_competition.code_competition.model.SourceCodeModel(a.id, a.time, a.memory, a.task.id, a.task.description) " +
+            "from SourceCode a where a.task.id =?1")
+    SourceCodeModel getByTaskId(Long id);
+
 }

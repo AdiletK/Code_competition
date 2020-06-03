@@ -10,6 +10,8 @@ import java.util.List;
 public interface TaskService {
     List<TaskModel> findAll();
 
+    List<TaskModel> findAllByCompetitionId(Long compId);
+
     Task getById(Long id);
 
     TaskModel findById(Long id);

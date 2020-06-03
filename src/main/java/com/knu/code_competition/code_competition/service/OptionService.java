@@ -9,6 +9,8 @@ import java.util.List;
 public interface OptionService {
     List<OptionModel> findAll();
 
+    List<OptionModel> findAllByTaskId(Long taskId);
+
     Option getById(Long id);
 
     OptionModel findById(Long id);

@@ -29,6 +29,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<TaskModel> findAllByCompetitionId(Long compId) {
+        return taskRepo.getAllByTaskId(compId);
+    }
+
+    @Override
     public Task getById(Long id) {
         return taskRepo.getOne(id);
     }
