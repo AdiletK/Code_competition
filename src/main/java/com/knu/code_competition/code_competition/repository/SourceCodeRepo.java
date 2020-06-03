@@ -13,6 +13,6 @@ public interface SourceCodeRepo extends JpaRepository<SourceCode, Long> {
     List<SourceCodeModel> getAll();
 
     @Query("select new com.knu.code_competition.code_competition.model.SourceCodeModel(a.id, a.time, a.memory, a.task.id, a.task.description) " +
-            "from SourceCode a where a.id =: id")
+            "from SourceCode a where a.id =?1")
     SourceCodeModel getById(Long id);
 }

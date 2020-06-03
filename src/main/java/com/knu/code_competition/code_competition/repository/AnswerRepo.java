@@ -13,6 +13,6 @@ public interface AnswerRepo extends JpaRepository<Answer, Long> {
     List<AnswerModel> getAll();
 
     @Query("select new com.knu.code_competition.code_competition.model.AnswerModel(a.id, a.option, a.task.id, a.task.description) " +
-            "from Option a where a.id =: id")
+            "from Option a where a.id =?1")
     AnswerModel getById(Long id);
 }

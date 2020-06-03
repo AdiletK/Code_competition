@@ -12,26 +12,31 @@ import java.util.List;
 @Service
 public class TestServiceImpl implements TestService {
     private final SourceCodeService sourceCodeService;
-    private final TestRepo optionRepo;
+    private final TestRepo testRepo;
 
-    public TestServiceImpl(SourceCodeService sourceCodeService, TestRepo optionRepo) {
+    public TestServiceImpl(SourceCodeService sourceCodeService, TestRepo testRepo) {
         this.sourceCodeService = sourceCodeService;
-        this.optionRepo = optionRepo;
+        this.testRepo = testRepo;
     }
 
     @Override
     public List<TestModel> findAll() {
-        return optionRepo.getAll();
+        return testRepo.getAll();
+    }
+
+    @Override
+    public List<TestModel> findAllBySourceCodeId(Long sourceCodeId) {
+        return testRepo.getAllBySourceCodeId(sourceCodeId);
     }
 
     @Override
     public Test getById(Long id) {
-        return optionRepo.getOne(id);
+        return testRepo.getOne(id);
     }
 
     @Override
     public TestModel findById(Long id) {
-        return optionRepo.getById(id);
+        return testRepo.getById(id);
     }
 
     @Override
@@ -42,7 +47,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public TestModel update(Long id, TestModel model) {
-        Test test = optionRepo.getOne(id);
+        Test test = testRepo.getOne(id);
         return getAnswerModel(model, test);
     }
 
@@ -50,13 +55,13 @@ public class TestServiceImpl implements TestService {
         test.setInput(model.getInput());
         test.setOutput(model.getOutput());
         test.setSourceCode(sourceCodeService.getById(model.getSourceCodeId()));
-        test = optionRepo.save(test);
+        test = testRepo.save(test);
         model.setId(test.getId());
         return model;
     }
 
     @Override
     public void delete(Long id) {
-        optionRepo.deleteById(id);
+        testRepo.deleteById(id);
     }
 }

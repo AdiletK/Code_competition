@@ -13,6 +13,6 @@ public interface OptionRepo extends JpaRepository<Option, Long> {
     List<OptionModel> getAll();
 
     @Query("select new com.knu.code_competition.code_competition.model.OptionModel(a.id, a.option, a.task.id, a.task.description, a.isCorrect) " +
-            "from Option a where a.id =: id")
+            "from Option a where a.id =?1")
     OptionModel getById(Long id);
 }

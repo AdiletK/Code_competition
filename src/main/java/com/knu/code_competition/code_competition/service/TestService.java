@@ -8,6 +8,8 @@ import java.util.List;
 public interface TestService {
     List<TestModel> findAll();
 
+    List<TestModel> findAllBySourceCodeId(Long sourceCodeId);
+
     Test getById(Long id);
 
     TestModel findById(Long id);

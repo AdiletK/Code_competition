@@ -15,10 +15,10 @@ public interface UserRepo extends JpaRepository<User, Long> {
     List<UserModel> getAll();
 
     @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.id, user.name, user.surname, user.patronymic,user.login, user.password) " +
-            "from User user where user.id =:id")
+            "from User user where user.id = ?1")
     UserModel findUserById(Long id);
 
     @Query("select new com.knu.code_competition.code_competition.model.UserModel(user.login, user.password) " +
-            "from User user where user.login =:user")
+            "from User user where user.login = ?1")
     UserModel findUserByUserName(String user);
 }

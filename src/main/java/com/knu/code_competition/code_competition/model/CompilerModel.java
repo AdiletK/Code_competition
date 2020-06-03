@@ -10,8 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompilerModel {
-    String script;
-    String language;
-    String versionIndex;
+    private Long sourceCodeId;
+    private String script;
+    private String language;
+    private String versionIndex;
 
 }

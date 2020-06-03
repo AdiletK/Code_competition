@@ -2,6 +2,7 @@ package com.knu.code_competition.code_competition.service.impl;
 
 import com.knu.code_competition.code_competition.model.CompilerModel;
 import com.knu.code_competition.code_competition.service.CompilerService;
+import com.knu.code_competition.code_competition.service.TestService;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +13,17 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 public class CompilerServiceImpl implements CompilerService {
-    String url = "https://api.jdoodle.com/v1/execute";
     private String clientId = "d319f05187f61a1ba0f2d4b5908f96ed";
-        private String clientSecret = "ae482e79fec907d28dab2e300e4a3949933c33bb18940b92cc5af6645d218604";
+    private String clientSecret = "ae482e79fec907d28dab2e300e4a3949933c33bb18940b92cc5af6645d218604";
+
+
     @Override
-    public String executeCode(CompilerModel compilerModel) {
-        return run(compilerModel);
+    public String executeCode(CompilerModel compilerModel, String stdin) {
+        return run(compilerModel, stdin);
     }
-    private String run(CompilerModel compilerModel){
+    private String run(CompilerModel compilerModel, String stdin){
         HttpURLConnection connection = null;
         OutputStream outputStream = null;
-        JSONObject json = null;
         String jsonText = "";
         try {
             URL url = new URL("https://api.jdoodle.com/v1/execute");
@@ -31,8 +32,13 @@ public class CompilerServiceImpl implements CompilerService {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
 
-            String input = "{\"clientId\": \"" + clientId + "\",\"clientSecret\":\"" + clientSecret + "\",\"script\":\"" + compilerModel.getScript() +
-                    "\",\"language\":\"" + compilerModel.getLanguage() + "\",\"versionIndex\":\"" + compilerModel.getVersionIndex() + "\"} ";
+
+            String input = "{\"clientId\": \"" + clientId +
+                    "\",\"clientSecret\":\"" + clientSecret +
+                    "\",\"script\":\"" + compilerModel.getScript().replaceAll("\"","\\\"") +
+                    "\",\"stdin\":\"" + stdin +
+                    "\",\"language\":\"" + compilerModel.getLanguage() +
+                    "\",\"versionIndex\":\"" + compilerModel.getVersionIndex() + "\"} ";
 
             System.out.println(input);
 

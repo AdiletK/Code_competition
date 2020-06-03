@@ -13,6 +13,6 @@ public interface ParticipantRepo extends JpaRepository<Participant, Long> {
     List<ParticipantModel> getAll();
 
     @Query("select new com.knu.code_competition.code_competition.model.ParticipantModel(p.id, p.user.id, p.user.name, p.user.surname, p.user.login, p.competition.id, p.competition.name, p.start_date, p.end_date) " +
-            "from Participant p where p.id =: id")
+            "from Participant p where p.id = ?1")
     ParticipantModel getById(Long id);
 }

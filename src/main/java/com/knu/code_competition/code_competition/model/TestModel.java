@@ -18,4 +18,10 @@ public class TestModel implements Serializable {
     private String output;
 
     private Long sourceCodeId;
+
+    public TestModel(Long id, String input, String output) {
+        this.id = id;
+        this.input = input;
+        this.output = output;
+    }
 }
