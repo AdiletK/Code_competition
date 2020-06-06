@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "source_code")
+@Table(name = "source_code", uniqueConstraints = {@UniqueConstraint(columnNames = {"task_id"})})
 public class SourceCode {
     @Id
     @SequenceGenerator(name = "source_code_seq", sequenceName = "source_code_seq", allocationSize = 1)
@@ -26,7 +26,7 @@ public class SourceCode {
     private Float memory;
 
     @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task_id", unique = true)
     private Task task;
 
 }
