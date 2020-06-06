@@ -19,7 +19,7 @@ public class Option {
     @Column(name = "option")
     private String option;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "task_id")
     private Task task;
 

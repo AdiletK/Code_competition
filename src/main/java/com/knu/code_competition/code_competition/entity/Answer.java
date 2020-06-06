@@ -22,7 +22,7 @@ public class Answer {
     @Column(name = "answer")
     private String answer;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "task_id")
     private Task task;
 

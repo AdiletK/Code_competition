@@ -13,26 +13,31 @@ import java.util.List;
 @Service
 public class SourceCodeServiceImpl implements SourceCodeService {
     private final TaskService taskService;
-    private final SourceCodeRepo optionRepo;
+    private final SourceCodeRepo sourceCodeRepo;
 
-    public SourceCodeServiceImpl(TaskService taskService, SourceCodeRepo optionRepo) {
+    public SourceCodeServiceImpl(TaskService taskService, SourceCodeRepo sourceCodeRepo) {
         this.taskService = taskService;
-        this.optionRepo = optionRepo;
+        this.sourceCodeRepo = sourceCodeRepo;
     }
 
     @Override
     public List<SourceCodeModel> findAll() {
-        return optionRepo.getAll();
+        return sourceCodeRepo.getAll();
     }
 
     @Override
     public SourceCode getById(Long id) {
-        return optionRepo.getOne(id);
+        return sourceCodeRepo.getOne(id);
     }
 
     @Override
     public SourceCodeModel findById(Long id) {
-        return optionRepo.getById(id);
+        return sourceCodeRepo.getById(id);
+    }
+
+    @Override
+    public SourceCodeModel findByTaskId(Long taskId) {
+        return sourceCodeRepo.getByTaskId(taskId);
     }
 
     @Override
@@ -43,7 +48,7 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 
     @Override
     public SourceCodeShortModel update(Long id, SourceCodeShortModel model) {
-        SourceCode sourceCode = optionRepo.getOne(id);
+        SourceCode sourceCode = sourceCodeRepo.getOne(id);
         return getSourceCodeModel(model, sourceCode);
     }
 
@@ -51,13 +56,13 @@ public class SourceCodeServiceImpl implements SourceCodeService {
         sourceCode.setMemory(model.getMemory());
         sourceCode.setTime(model.getTime());
         sourceCode.setTask(taskService.getById(model.getTaskId()));
-        sourceCode = optionRepo.save(sourceCode);
+        sourceCode = sourceCodeRepo.save(sourceCode);
         model.setId(sourceCode.getId());
         return model;
     }
 
     @Override
     public void delete(Long id) {
-        optionRepo.deleteById(id);
+        sourceCodeRepo.deleteById(id);
     }
 }

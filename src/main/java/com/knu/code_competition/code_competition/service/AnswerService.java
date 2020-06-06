@@ -11,6 +11,8 @@ public interface AnswerService {
 
     Answer getById(Long id);
 
+    AnswerModel findByTaskId(Long taskId);
+
     AnswerModel findById(Long id);
 
     AnswerShortModel create(AnswerShortModel model);

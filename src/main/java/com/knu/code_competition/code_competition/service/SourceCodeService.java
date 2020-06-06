@@ -13,6 +13,8 @@ public interface SourceCodeService {
 
     SourceCodeModel findById(Long id);
 
+    SourceCodeModel findByTaskId(Long taskId);
+
     SourceCodeShortModel create(SourceCodeShortModel model);
 
     SourceCodeShortModel update(Long id, SourceCodeShortModel model);

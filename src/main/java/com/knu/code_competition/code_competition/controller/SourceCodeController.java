@@ -29,6 +29,11 @@ public class SourceCodeController {
         return sourceCode.findById(id);
     }
 
+    @GetMapping("/by_task/{id}")
+    public SourceCodeModel findByTaskId(@PathVariable Long id){
+        return sourceCode.findByTaskId(id);
+    }
+
     @PreAuthorize("hasRole('admin')")
     @PostMapping
     public SourceCodeShortModel create(@RequestBody SourceCodeShortModel model) {

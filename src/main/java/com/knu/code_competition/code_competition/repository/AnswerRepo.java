@@ -18,5 +18,9 @@ public interface AnswerRepo extends JpaRepository<Answer, Long> {
 
     @Query("select new com.knu.code_competition.code_competition.model.AnswerModel(a.id, a.answer, a.task.id, a.task.description) " +
             "from Answer a where a.task.id =?1")
+    AnswerModel getAnswerByTaskId(Long taskId);
+
+    @Query("select new com.knu.code_competition.code_competition.model.AnswerModel(a.id, a.answer, a.task.id, a.task.description) " +
+            "from Answer a where a.task.id =?1")
     AnswerModel getByTaskId(Long id);
 }

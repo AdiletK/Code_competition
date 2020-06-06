@@ -13,26 +13,31 @@ import java.util.List;
 @Service
 public class AnswerServiceImpl implements AnswerService {
     private final TaskService taskService;
-    private final AnswerRepo optionRepo;
+    private final AnswerRepo answerRepo;
 
-    public AnswerServiceImpl(TaskService taskService, AnswerRepo optionRepo) {
+    public AnswerServiceImpl(TaskService taskService, AnswerRepo answerRepo) {
         this.taskService = taskService;
-        this.optionRepo = optionRepo;
+        this.answerRepo = answerRepo;
     }
 
     @Override
     public List<AnswerModel> findAll() {
-        return optionRepo.getAll();
+        return answerRepo.getAll();
     }
 
     @Override
     public Answer getById(Long id) {
-        return optionRepo.getOne(id);
+        return answerRepo.getOne(id);
+    }
+
+    @Override
+    public AnswerModel findByTaskId(Long taskId) {
+        return answerRepo.getAnswerByTaskId(taskId);
     }
 
     @Override
     public AnswerModel findById(Long id) {
-        return optionRepo.getById(id);
+        return answerRepo.getById(id);
     }
 
     @Override
@@ -43,20 +48,20 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public AnswerShortModel update(Long id, AnswerShortModel model) {
-        Answer answer = optionRepo.getOne(id);
+        Answer answer = answerRepo.getOne(id);
         return getAnswerModel(model, answer);
     }
 
     private AnswerShortModel getAnswerModel(AnswerShortModel model, Answer answer) {
         answer.setAnswer(model.getOption());
         answer.setTask(taskService.getById(model.getTaskId()));
-        answer = optionRepo.save(answer);
+        answer = answerRepo.save(answer);
         model.setId(answer.getId());
         return model;
     }
 
     @Override
     public void delete(Long id) {
-        optionRepo.deleteById(id);
+        answerRepo.deleteById(id);
     }
 }

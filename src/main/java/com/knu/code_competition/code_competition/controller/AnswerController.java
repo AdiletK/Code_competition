@@ -30,6 +30,11 @@ public class AnswerController {
         return answerService.findById(id);
     }
 
+    @GetMapping("/by_task/{id}")
+    public AnswerModel findByTaskId(@PathVariable Long id){
+        return answerService.findByTaskId(id);
+    }
+
     @PreAuthorize("hasRole('admin')")
     @PostMapping
     public AnswerShortModel create(@RequestBody AnswerShortModel model) {
