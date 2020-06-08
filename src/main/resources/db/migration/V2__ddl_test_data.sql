@@ -21,10 +21,25 @@ insert into competition (end_datetime, name, start_datetime, subject_id, user_id
     values ('11-10-20', 'Olymp1', '10-10-20', (SELECT id FROM subject WHERE name = 'Math') , (SELECT id FROM users WHERE login = 'admin'), (select nextval ('competition_seq')));
 
 insert into "task" (competition_id, description, task_type, id)
-    values ((select id from competition where name ='Olymp'), 'Kyrgyz national olymp', 'CODE', (select nextval ('task_seq')));
+    values ((select id from competition where name ='Olymp'), 'Write calculator?', 'CODE', (select nextval ('task_seq')));
+insert into "task" (competition_id, description, task_type, id)
+    values ((select id from competition where name ='Olymp1'), 'what is Git ?', 'ANSWERS', (select nextval ('task_seq')));
+    insert into "task" (competition_id, description, task_type, id)
+    values ((select id from competition where name ='Olymp1'), '5+5', 'ANSWER', (select nextval ('task_seq')));
 
 insert into source_code (memory_limit, task_id, time_limit, id)
-    values (100, (SELECT id FROM task WHERE id = 1), 100, (select nextval ('source_code_seq')));
+    values (100, 1, 100, (select nextval ('source_code_seq')));
+
+insert into answer (answer, task_id, id)
+    values (100, 3, (select nextval ('answer_seq')));
+
+insert into "option" (is_correct,"option", task_id, id)
+    values (true,'Source control system', 2, (select nextval ('option_seq')));
+insert into "option" (is_correct,"option", task_id, id)
+    values (false ,'cloud drive', 2, (select nextval ('option_seq')));
+insert into "option" (is_correct,"option", task_id, id)
+    values (false ,'test', 2, (select nextval ('option_seq')));
+
 
 insert into test (input, output, source_code_id, id)
     values ('1 2', '3',(SELECT id FROM source_code WHERE id = 1) , (select nextval ('test_seq')));

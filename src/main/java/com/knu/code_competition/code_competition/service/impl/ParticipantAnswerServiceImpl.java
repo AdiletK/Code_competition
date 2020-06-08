@@ -34,6 +34,16 @@ public class ParticipantAnswerServiceImpl implements ParticipantAnswerService {
     }
 
     @Override
+    public List<ParticipantAnswerModel> getByTaskId(Long id) {
+        return participantAnswerRepo.getByTaskId(id);
+    }
+
+    @Override
+    public List<ParticipantAnswerModel> getByParticipantId(Long id) {
+        return participantAnswerRepo.getByParticipantId(id);
+    }
+
+    @Override
     public ParticipantAnswerModel findById(Long id) {
         return participantAnswerRepo.getById(id);
     }

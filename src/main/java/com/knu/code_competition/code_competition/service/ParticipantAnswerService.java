@@ -11,6 +11,10 @@ public interface ParticipantAnswerService {
 
     ParticipantAnswer getById(Long id);
 
+    List<ParticipantAnswerModel> getByTaskId(Long id);
+
+    List<ParticipantAnswerModel> getByParticipantId(Long id);
+
     ParticipantAnswerModel findById(Long id);
 
     ParticipantAnswerShortModel create(ParticipantAnswerShortModel competitionModel);

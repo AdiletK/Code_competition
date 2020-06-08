@@ -24,6 +24,16 @@ public class ParticipantAnswerController {
         return participantAnswerService.findAll();
     }
 
+    @GetMapping("/by_task/{taskId}")
+    public List<ParticipantAnswerModel> findByTaskId(@PathVariable Long taskId){
+        return participantAnswerService.getByTaskId(taskId);
+    }
+
+    @GetMapping("/by_participant/{parId}")
+    public List<ParticipantAnswerModel> findByParticipantId(@PathVariable Long parId){
+        return participantAnswerService.getByParticipantId(parId);
+    }
+
     @GetMapping("/{id}")
     public ParticipantAnswerModel findById(@PathVariable Long id){
         return participantAnswerService.findById(id);

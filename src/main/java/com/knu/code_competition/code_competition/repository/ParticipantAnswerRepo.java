@@ -15,4 +15,12 @@ public interface ParticipantAnswerRepo extends JpaRepository<ParticipantAnswer, 
     @Query("select new com.knu.code_competition.code_competition.model.ParticipantAnswerModel(p.id, p.participant.user.id, p.participant.user.name, p.participant.user.surname, p.participant.user.login, p.task.id, p.task.description, p.option) " +
             "from ParticipantAnswer p where p.id =?1")
     ParticipantAnswerModel getById(Long id);
+
+    @Query("select new com.knu.code_competition.code_competition.model.ParticipantAnswerModel(p.id, p.participant.user.id, p.participant.user.name, p.participant.user.surname, p.participant.user.login, p.task.id, p.task.description, p.option) " +
+            "from ParticipantAnswer p where p.participant.id =?1")
+    List<ParticipantAnswerModel> getByParticipantId(Long id);
+
+    @Query("select new com.knu.code_competition.code_competition.model.ParticipantAnswerModel(p.id, p.participant.user.id, p.participant.user.name, p.participant.user.surname, p.participant.user.login, p.task.id, p.task.description, p.option) " +
+            "from ParticipantAnswer p where p.task.id =?1")
+    List<ParticipantAnswerModel> getByTaskId(Long id);
 }

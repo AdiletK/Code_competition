@@ -7,8 +7,6 @@ import com.knu.code_competition.code_competition.model.TaskShortModel;
 import com.knu.code_competition.code_competition.repository.TaskRepo;
 import com.knu.code_competition.code_competition.service.TaskService;
 import com.knu.code_competition.code_competition.service.CompetitionService;
-import com.knu.code_competition.code_competition.service.TaskService;
-import com.knu.code_competition.code_competition.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +28,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskModel> findAllByCompetitionId(Long compId) {
-        return taskRepo.getAllByTaskId(compId);
+        return taskRepo.getAllByCompetitionId(compId);
     }
 
     @Override

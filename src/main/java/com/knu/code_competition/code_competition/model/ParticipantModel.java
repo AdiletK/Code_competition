@@ -28,4 +28,5 @@ public class ParticipantModel implements Serializable {
 
     private Date end_date;
 
+    private Float score;
 }

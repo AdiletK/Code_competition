@@ -23,6 +23,11 @@ public class TestController {
         return testService.findAll();
     }
 
+    @GetMapping("/by_code/{id}")
+    public List<TestModel> findAllByCodeId(@PathVariable Long id){
+        return testService.findAllBySourceCodeId(id);
+    }
+
     @GetMapping("/{id}")
     public TestModel findById(@PathVariable Long id){
         return testService.findById(id);

@@ -40,6 +40,21 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
+    public ParticipantModel findByCompetitionAndUserId(Long userId, Long comId) {
+        return participantRepo.getByCompetitionAndUserId(userId, comId);
+    }
+
+    @Override
+    public List<ParticipantModel> findByCompetitionId(Long id) {
+        return participantRepo.getByCompetitionId(id);
+    }
+
+    @Override
+    public List<ParticipantModel> findByUserId(Long id) {
+        return participantRepo.getByUserId(id);
+    }
+
+    @Override
     public ParticipantShortModel create(ParticipantShortModel model) {
         Participant root = new Participant();
         return getParticipantModel(model, root);

@@ -23,6 +23,15 @@ public class ParticipantController {
         return participantService.findAll();
     }
 
+    @GetMapping("/by_user/{userId}")
+    public List<ParticipantModel> findByUserId(@PathVariable Long userId){
+        return participantService.findByUserId(userId);
+    }
+
+    @GetMapping("/by_competition/{comId}")
+    public List<ParticipantModel> findByCompId(@PathVariable Long comId){
+        return participantService.findByCompetitionId(comId);
+    }
     @GetMapping("/{id}")
     public ParticipantModel findById(@PathVariable Long id){
         return participantService.findById(id);
