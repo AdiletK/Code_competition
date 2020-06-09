@@ -25,7 +25,7 @@ public class SourceCode {
     @Column(name = "memory_limit")
     private Float memory;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne
     @JoinColumn(name = "task_id", unique = true)
     private Task task;
 

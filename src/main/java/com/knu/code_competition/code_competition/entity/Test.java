@@ -25,7 +25,7 @@ public class Test {
     @Column(name = "output")
     private String output;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "source_code_id")
     private SourceCode sourceCode;
 
