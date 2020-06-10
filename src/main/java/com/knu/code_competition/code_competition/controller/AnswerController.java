@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@PreAuthorize("hasRole('admin')")
 @CrossOrigin
 @RequestMapping("/api/v1/answer")
 @RestController
