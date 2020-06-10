@@ -1,5 +1,6 @@
 package com.knu.code_competition.code_competition.controller;
 
+import com.knu.code_competition.code_competition.Utils.RecordNotFoundException;
 import com.knu.code_competition.code_competition.model.CompilerModel;
 import com.knu.code_competition.code_competition.model.CompilerResponseModel;
 import com.knu.code_competition.code_competition.model.TestModel;
@@ -30,18 +31,22 @@ public class CodeCompilerController {
         JSONObject jsonObject = null;
         System.out.println(compilerModel.getSourceCodeId());
         List<TestModel> testModels = testService.findAllBySourceCodeId(compilerModel.getSourceCodeId());
-        for (TestModel testModel : testModels) {
-            String res = compilerService.executeCode(compilerModel, testModel.getInput());
-            jsonObject = new JSONObject(res);
-            output = jsonObject.get("output").toString().trim();
-
-            if (!output.equals(testModel.getOutput())) {
-                return new CompilerResponseModel("Code not accepted");
+        if (!testModels.isEmpty()) {
+            for (TestModel testModel : testModels) {
+                String res = compilerService.executeCode(compilerModel, testModel.getInput());
+                System.out.println(res);
+                jsonObject = new JSONObject(res);
+                output = jsonObject.get("output").toString().trim();
+                String result = output.substring(output.lastIndexOf("\n"));
+                if (!result.equals(testModel.getOutput())) {
+                    return new CompilerResponseModel("Code not accepted");
+                }
             }
+        } else {
+            throw new RecordNotFoundException("Tests not found");
         }
         System.out.println(output);
 
-        assert jsonObject != null;
         return new CompilerResponseModel(
                 jsonObject.get("output").toString(),
                 jsonObject.get("memory").toString(),

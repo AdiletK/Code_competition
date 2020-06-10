@@ -25,7 +25,7 @@ public class Competition {
     private Subject subject;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @Column(name = "start_datetime")

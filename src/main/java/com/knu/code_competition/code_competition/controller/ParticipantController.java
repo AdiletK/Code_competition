@@ -2,6 +2,7 @@ package com.knu.code_competition.code_competition.controller;
 
 import com.knu.code_competition.code_competition.model.ParticipantModel;
 import com.knu.code_competition.code_competition.model.ParticipantShortModel;
+import com.knu.code_competition.code_competition.model.ResultIsEmpty;
 import com.knu.code_competition.code_competition.service.ParticipantService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,12 @@ public class ParticipantController {
     public List<ParticipantModel> findByCompId(@PathVariable Long comId){
         return participantService.findByCompetitionId(comId);
     }
+
+    @GetMapping("/by_competition_and_user/{comId}/{userId}")
+    public ResultIsEmpty findByCompAndUserId(@PathVariable Long comId, @PathVariable Long userId){
+        return new ResultIsEmpty(participantService.findByCompetitionAndUserId(userId, comId) != null);
+    }
+
     @GetMapping("/{id}")
     public ParticipantModel findById(@PathVariable Long id){
         return participantService.findById(id);

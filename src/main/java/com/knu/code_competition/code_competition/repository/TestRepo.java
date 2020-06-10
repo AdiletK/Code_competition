@@ -16,7 +16,7 @@ public interface TestRepo extends JpaRepository<Test, Long> {
             "from Test a where a.id = ?1")
     TestModel getById(Long id);
 
-    @Query("select new com.knu.code_competition.code_competition.model.TestModel(a.id, a.input, a.output) " +
+    @Query("select new com.knu.code_competition.code_competition.model.TestModel(a.id, a.input, a.output, a.sourceCode.id) " +
             "from Test a where a.sourceCode.id = ?1")
     List<TestModel> getAllBySourceCodeId(Long id);
 }

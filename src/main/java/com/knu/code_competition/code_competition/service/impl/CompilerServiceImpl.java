@@ -21,6 +21,7 @@ public class CompilerServiceImpl implements CompilerService {
     public String executeCode(CompilerModel compilerModel, String stdin) {
         return run(compilerModel, stdin);
     }
+
     private String run(CompilerModel compilerModel, String stdin){
         HttpURLConnection connection = null;
         OutputStream outputStream = null;
@@ -31,11 +32,12 @@ public class CompilerServiceImpl implements CompilerService {
             connection.setDoOutput(true);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
+            System.out.println(compilerModel.getScript().replace("\"", "\\\""));
 
 
             String input = "{\"clientId\": \"" + clientId +
                     "\",\"clientSecret\":\"" + clientSecret +
-                    "\",\"script\":\"" + compilerModel.getScript().replaceAll("\"","\\\"") +
+                    "\",\"script\":\"" + compilerModel.getScript().replace("\"", "\\\"")     +
                     "\",\"stdin\":\"" + stdin +
                     "\",\"language\":\"" + compilerModel.getLanguage() +
                     "\",\"versionIndex\":\"" + compilerModel.getVersionIndex() + "\"} ";
@@ -68,7 +70,8 @@ public class CompilerServiceImpl implements CompilerService {
         }
         return jsonText;
     }
-    private static String readAll(Reader rd) throws IOException {
+
+    private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;
         while ((cp = rd.read()) != -1) {

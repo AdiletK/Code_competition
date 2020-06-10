@@ -32,7 +32,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public AnswerModel findByTaskId(Long taskId) {
-        return answerRepo.getAnswerByTaskId(taskId);
+        return answerRepo.getByTaskId(taskId);
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.knu.code_competition.code_competition.model.JwtRequest;
 import com.knu.code_competition.code_competition.model.JwtResponse;
 import com.knu.code_competition.code_competition.model.Message;
 import com.knu.code_competition.code_competition.model.UserModel;
+import com.knu.code_competition.code_competition.service.UserService;
 import com.knu.code_competition.code_competition.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,12 +26,15 @@ public class JwtAuthenticationController {
 
     private final JwtUserDetailsServiceImpl userDetailsService;
 
+    private final UserService userService;
+
     private final Message message;
 
-    public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, JwtUserDetailsServiceImpl userDetailsService) {
+    public JwtAuthenticationController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, JwtUserDetailsServiceImpl userDetailsService, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
         this.userDetailsService = userDetailsService;
+        this.userService = userService;
         this.message = new Message("The login is already exists");
     }
 

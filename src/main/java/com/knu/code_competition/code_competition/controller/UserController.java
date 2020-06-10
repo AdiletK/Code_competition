@@ -31,6 +31,11 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @GetMapping("by_login/{login}")
+    public UserModel findByLogin(@PathVariable String login){
+        return userService.findByLogin(login);
+    }
+
     @PostMapping("/{id}")
     public User update(@PathVariable Long id, @RequestBody UserModel userModel){
         return userService.update(id, userModel);

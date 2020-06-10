@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserModel findByLogin(String login) {
+        return userRepo.findUserByLogin(login);
+    }
+
+    @Override
     public User getById(Long id) {
         return userRepo.findById(id).orElseThrow(()-> new RecordNotFoundException("Record not found with id:" + id));
     }

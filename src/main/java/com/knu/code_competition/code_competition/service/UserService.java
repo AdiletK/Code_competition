@@ -10,6 +10,8 @@ public interface UserService {
 
     UserModel findById(Long id);
 
+    UserModel findByLogin(String login);
+
     User getById(Long id);
 
     User update(Long id, UserModel userModel);
