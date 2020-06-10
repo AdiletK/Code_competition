@@ -37,8 +37,9 @@ public class CodeCompilerController {
                 System.out.println(res);
                 jsonObject = new JSONObject(res);
                 output = jsonObject.get("output").toString().trim();
-                String result = output.substring(output.lastIndexOf("\n"));
-                if (!result.equals(testModel.getOutput())) {
+                String[] arr = output.split("\n");
+                System.out.println(arr[arr.length - 1]);
+                if (!arr[arr.length - 1].equals(testModel.getOutput())) {
                     return new CompilerResponseModel("Code not accepted");
                 }
             }
