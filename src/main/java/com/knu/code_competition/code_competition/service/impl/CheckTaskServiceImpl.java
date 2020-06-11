@@ -24,7 +24,7 @@ public class CheckTaskServiceImpl implements CheckTaskService {
 
     @Override
     public CheckTaskModel checkTask(Long userId, Long competitionId) {
-        ParticipantModel participantModel = participantService.findByCompetitionAndUserId(userId, competitionId);
+        ParticipantModel participantModel = participantService.findByCompetitionAndUserId(userId, competitionId).get(0);
         CheckTaskModel checkTaskModel = new CheckTaskModel();
         if (participantModel != null) {
             List<ParticipantAnswerModel> answerModel = participantAnswerService.getByParticipantId(participantModel.getId());
