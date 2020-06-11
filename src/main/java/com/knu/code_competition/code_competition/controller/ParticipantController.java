@@ -36,7 +36,7 @@ public class ParticipantController {
 
     @GetMapping("/by_competition_and_user/{comId}/{userId}")
     public ResultIsEmpty findByCompAndUserId(@PathVariable Long comId, @PathVariable Long userId){
-        return new ResultIsEmpty(participantService.findByCompetitionAndUserId(userId, comId) != null);
+        return new ResultIsEmpty(!participantService.findByCompetitionAndUserId(userId, comId).isEmpty());
     }
 
     @GetMapping("/{id}")

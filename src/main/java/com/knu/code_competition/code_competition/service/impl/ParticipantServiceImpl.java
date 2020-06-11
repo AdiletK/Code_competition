@@ -40,7 +40,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public ParticipantModel findByCompetitionAndUserId(Long userId, Long comId) {
+    public List<ParticipantModel> findByCompetitionAndUserId(Long userId, Long comId) {
         return participantRepo.getByCompetitionAndUserId(userId, comId);
     }
 
