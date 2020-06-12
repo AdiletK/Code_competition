@@ -24,6 +24,16 @@ public class CompetitionController {
         return competitionService.findAll();
     }
 
+    @GetMapping("/active")
+    public List<CompetitionModel> findActive(){
+        return competitionService.findActive();
+    }
+
+    @GetMapping("/completed")
+    public List<CompetitionModel> findCompleted(){
+        return competitionService.findCompleted();
+    }
+
     @GetMapping("/by_subject/{id}")
     public List<CompetitionModel> findAllBySubjectId(@PathVariable Long id){
         return competitionService.findAllBySubjectId(id);

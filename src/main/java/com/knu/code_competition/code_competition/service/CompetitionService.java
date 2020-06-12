@@ -9,6 +9,10 @@ import java.util.List;
 public interface CompetitionService {
     List<CompetitionModel> findAll();
 
+    List<CompetitionModel> findActive();
+
+    List<CompetitionModel> findCompleted();
+
     List<CompetitionModel> findAllBySubjectId(Long subjectId);
 
     Competition getById(Long id);

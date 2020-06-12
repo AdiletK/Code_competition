@@ -20,7 +20,7 @@ public class Participant {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
