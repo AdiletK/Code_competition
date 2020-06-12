@@ -28,4 +28,7 @@ public class ParticipantAnswer {
     @Column(name = "option")
     private String option;
 
+    @Column(name = "isCorrect")
+    private Boolean isCorrect = false;
+
 }

@@ -19,6 +19,10 @@ public interface ParticipantRepo extends JpaRepository<Participant, Long> {
 
     @Query("select new com.knu.code_competition.code_competition.model.ParticipantModel(p.id, p.user.id, p.user.name, p.user.surname, p.user.login, p.competition.id, p.competition.name, p.start_date, p.end_date, p.score) " +
             "from Participant p where p.user.id = ?1 and  p.competition.id = ?2 and p.end_date >= current_timestamp")
+    List<ParticipantModel> getActiveByCompetitionAndUserId(Long userId, Long competitionId);
+
+    @Query("select new com.knu.code_competition.code_competition.model.ParticipantModel(p.id, p.user.id, p.user.name, p.user.surname, p.user.login, p.competition.id, p.competition.name, p.start_date, p.end_date, p.score) " +
+            "from Participant p where p.user.id = ?1 and  p.competition.id = ?2")
     List<ParticipantModel> getByCompetitionAndUserId(Long userId, Long competitionId);
 
     @Query("select new com.knu.code_competition.code_competition.model.ParticipantModel(p.id, p.user.id, p.user.name, p.user.surname, p.user.login, p.competition.id, p.competition.name, p.start_date, p.end_date, p.score) " +

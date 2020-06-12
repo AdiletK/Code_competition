@@ -15,6 +15,8 @@ public interface ParticipantAnswerService {
 
     List<ParticipantAnswerModel> getByParticipantId(Long id);
 
+    List<ParticipantAnswerShortModel> getShortByParticipantId(Long id);
+
     ParticipantAnswerModel findById(Long id);
 
     ParticipantAnswerShortModel create(ParticipantAnswerShortModel competitionModel);

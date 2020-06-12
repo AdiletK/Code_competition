@@ -5,7 +5,6 @@ import com.knu.code_competition.code_competition.model.ParticipantModel;
 import com.knu.code_competition.code_competition.model.ParticipantShortModel;
 import com.knu.code_competition.code_competition.repository.ParticipantRepo;
 import com.knu.code_competition.code_competition.service.ParticipantService;
-import com.knu.code_competition.code_competition.service.ParticipantService;
 import com.knu.code_competition.code_competition.service.CompetitionService;
 import com.knu.code_competition.code_competition.service.UserService;
 import org.springframework.stereotype.Service;
@@ -37,6 +36,11 @@ public class ParticipantServiceImpl implements ParticipantService {
     @Override
     public ParticipantModel findById(Long id) {
         return participantRepo.getById(id);
+    }
+
+    @Override
+    public List<ParticipantModel> findActiveByCompetitionAndUserId(Long userId, Long comId) {
+        return participantRepo.getActiveByCompetitionAndUserId(userId, comId);
     }
 
     @Override

@@ -24,5 +24,4 @@ public class ParticipantAnswerModel implements Serializable {
     private String taskName;
 
     private String option;
-
 }

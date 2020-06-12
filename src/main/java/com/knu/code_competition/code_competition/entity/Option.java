@@ -24,5 +24,5 @@ public class Option {
     private Task task;
 
     @Column(name = "isCorrect")
-    private Boolean isCorrect;
+    private Boolean isCorrect = false;
 }

@@ -44,6 +44,11 @@ public class ParticipantAnswerServiceImpl implements ParticipantAnswerService {
     }
 
     @Override
+    public List<ParticipantAnswerShortModel> getShortByParticipantId(Long id) {
+        return participantAnswerRepo.getShortByParticipantId(id);
+    }
+
+    @Override
     public ParticipantAnswerModel findById(Long id) {
         return participantAnswerRepo.getById(id);
     }
@@ -64,6 +69,7 @@ public class ParticipantAnswerServiceImpl implements ParticipantAnswerService {
         root.setOption(model.getOption());
         root.setTask(taskService.getById(model.getTaskId()));
         root.setParticipant(participantService.getById(model.getParticipantId()));
+        root.setIsCorrect(model.getIsCorrect());
         root = participantAnswerRepo.save(root);
         model.setId(root.getId());
         return model;

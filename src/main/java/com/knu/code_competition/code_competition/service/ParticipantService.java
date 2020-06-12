@@ -13,6 +13,8 @@ public interface ParticipantService {
 
     ParticipantModel findById(Long id);
 
+    List<ParticipantModel> findActiveByCompetitionAndUserId(Long userId, Long comId);
+
     List<ParticipantModel> findByCompetitionAndUserId(Long userId, Long comId);
 
     List<ParticipantModel> findByCompetitionId(Long id);

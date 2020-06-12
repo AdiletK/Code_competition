@@ -34,9 +34,14 @@ public class ParticipantController {
         return participantService.findByCompetitionId(comId);
     }
 
+    @GetMapping("/check_by_competition_and_user/{comId}/{userId}")
+    public ResultIsEmpty checkActiveByCompAndUserId(@PathVariable Long comId, @PathVariable Long userId){
+        return new ResultIsEmpty(!participantService.findActiveByCompetitionAndUserId(userId, comId).isEmpty());
+    }
+
     @GetMapping("/by_competition_and_user/{comId}/{userId}")
-    public ResultIsEmpty findByCompAndUserId(@PathVariable Long comId, @PathVariable Long userId){
-        return new ResultIsEmpty(!participantService.findByCompetitionAndUserId(userId, comId).isEmpty());
+    public List<ParticipantModel> findByCompAndUserId(@PathVariable Long comId, @PathVariable Long userId){
+        return participantService.findByCompetitionAndUserId(userId, comId);
     }
 
     @GetMapping("/{id}")
