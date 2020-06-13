@@ -30,9 +30,4 @@ public class Participant {
     @Column(name = "score")
     private Float score;
 
-    @Column(name = "start_datetime")
-    private Date start_date;
-
-    @Column(name = "end_datetime")
-    private Date end_date;
 }

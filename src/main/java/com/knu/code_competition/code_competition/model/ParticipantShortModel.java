@@ -16,7 +16,4 @@ public class ParticipantShortModel implements Serializable {
 
     private Long competitionId;
 
-    private Date startDate;
-
-    private Date endDate;
 }

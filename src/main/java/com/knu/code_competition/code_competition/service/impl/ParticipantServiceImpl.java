@@ -73,8 +73,6 @@ public class ParticipantServiceImpl implements ParticipantService {
     private ParticipantShortModel getParticipantModel(ParticipantShortModel model, Participant root) {
         root.setCompetition(competitionService.getById(model.getCompetitionId()));
         root.setUser(userService.getCurrentUserId());
-        root.setStart_date(model.getStartDate());
-        root.setEnd_date(model.getEndDate());
         root = participantRepo.save(root);
         model.setId(root.getId());
         return model;

@@ -53,7 +53,6 @@ public class CheckTaskServiceImpl implements CheckTaskService {
         return getResponseCheckModels(responseCheckModels, participantModels);
     }
 
-
     private List<ResponseCheckModel> getResponseCheckModels(List<ResponseCheckModel> responseCheckModels, List<ParticipantModel> participantModels) {
         if (participantModels.isEmpty()){
             throw new RecordNotFoundException("Data not found!");

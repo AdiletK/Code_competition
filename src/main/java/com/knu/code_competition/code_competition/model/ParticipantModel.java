@@ -22,9 +22,6 @@ public class ParticipantModel implements Serializable {
     private Long competitionId;
     private String competitionName;
 
-    private Date start_date;
-
-    private Date end_date;
 
     private Float score;
 }
