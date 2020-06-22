@@ -2,7 +2,7 @@ package com.knu.code_competition.code_competition.config;
 
 import com.knu.code_competition.code_competition.config.jwt.JwtAuthenticationEntryPoint;
 import com.knu.code_competition.code_competition.config.jwt.JwtRequestFilter;
-import com.knu.code_competition.code_competition.service.JwtUserDetailsServiceImpl;
+import com.knu.code_competition.code_competition.service.impl.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,9 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // We don't need CSRF for this example
-        httpSecurity.csrf().disable()
+        httpSecurity.cors().and().csrf().disable()
                 // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/api/v1/authenticate", "/api/v1/register", "/v2/api-docs").permitAll().
+                .authorizeRequests().antMatchers("/api/v1/authenticate", "/api/v1/register", "/v2/api-docs", "/swagger-ui.html", "/swagger-resources/**","/webjars/**").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to

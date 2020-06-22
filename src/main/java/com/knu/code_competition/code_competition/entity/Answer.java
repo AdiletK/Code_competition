@@ -1,7 +1,16 @@
 package com.knu.code_competition.code_competition.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "answer")
 public class Answer {
@@ -10,10 +19,11 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answer_seq")
     private Long id;
 
-    @Column(name = "option")
-    private String option;
+    @Column(name = "answer")
+    private String answer;
 
-    @ManyToOne
-    @JoinColumn(name = "task_id")
+    @OneToOne
+    @JoinColumn(name = "task_id", unique = true)
     private Task task;
+
 }

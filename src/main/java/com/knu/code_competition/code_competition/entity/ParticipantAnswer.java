@@ -1,10 +1,17 @@
 package com.knu.code_competition.code_competition.entity;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "participant_answer")
-public class Participant_answer {
+public class ParticipantAnswer {
     @Id
     @SequenceGenerator(name = "participant_answer_seq", sequenceName = "participant_answer_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "participant_answer_seq")
@@ -20,5 +27,8 @@ public class Participant_answer {
 
     @Column(name = "option")
     private String option;
+
+    @Column(name = "isCorrect")
+    private Boolean isCorrect = false;
 
 }

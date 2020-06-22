@@ -1,7 +1,13 @@
 package com.knu.code_competition.code_competition.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "subject")
 public class Subject {
